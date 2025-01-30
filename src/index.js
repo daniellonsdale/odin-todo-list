@@ -1,2 +1,4 @@
 import "./styles.css";
-import { todo } from "./todo";
+import { Project } from "./project";
+
+let projects = [];
