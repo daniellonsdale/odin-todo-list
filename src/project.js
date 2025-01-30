@@ -1,8 +1,9 @@
 import { Todo } from "./todo";
 
 export class Project{
-    constructor(){
+    constructor(name){
         todos = [];
+        this.name = name;
     }
 
     createTodo(title, description, dueDate, priority){
