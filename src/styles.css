@@ -8,4 +8,40 @@
 
 body{
     min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    grid-template-rows: 1fr 8fr;
 }
+
+body header{
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+}
+
+body .sidebar{
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+body .main-content{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+header .header-title-container{
+    margin-left: 24px;
+    display: flex;
+    gap: 4px;
+    font-size: 3rem;
+}
+
