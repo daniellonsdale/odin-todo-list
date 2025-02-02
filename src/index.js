@@ -17,3 +17,11 @@ function removeProject(ind){
     });
     //Call removeProjectDOM to remove from DOM based on data-index
 }
+
+createProject("testpro");
+console.log(projects);
+projects[0].createTodo("laundry", "do the laundry and hang it up after", "2025/2/4", 3);
+projects[0].createTodo("cook", "do the cooking and eat it", "2025/2/1", 1);
+projects[0].removeTodo(0);
+console.log(projects[0]);
+console.log(projects[1]);
