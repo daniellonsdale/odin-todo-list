@@ -2,7 +2,7 @@ import { Todo } from "./todo";
 
 export class Project{
     constructor(name, index){
-        todos = [];
+        const todos = [];
         this.name = name;
         this.index = index;
     }
