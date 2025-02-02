@@ -12,8 +12,13 @@ export class Project{
         //Call createTodoDOM() to add to DOM with data-index
     }
 
-    removeTodo(index){
-        delete todos[index];
+    removeTodo(ind){
+        todos.splice(ind, 1);
+        todos.forEach(element => {
+            if (element.index > ind){
+                element.index--;
+            }
+        });
         //Call removeTodoDOM to remove from DOM based on data-index
     }
 }
