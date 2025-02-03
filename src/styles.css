@@ -6,6 +6,24 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'oswaldlight';
+    src: url('./fonts/oswald-light-webfont.woff2') format('woff2'),
+         url('./fonts/oswald-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'oswald_regularregular';
+    src: url('./fonts/oswald-regular-webfont.woff2') format('woff2'),
+         url('./fonts/oswald-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 body{
     min-height: 100vh;
     display: grid;
