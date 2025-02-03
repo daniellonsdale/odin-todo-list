@@ -11,13 +11,26 @@ const newProjectForm = document.querySelector('.new-project-form');
 const newTaskForm = document.querySelector('.new-task-form');
 const newProjectSubmitBtn = document.querySelector('.new-project-submit-button');
 const newTaskSubmitBtn = document.querySelector('.new-task-submit-button');
+const defaultProject = document.querySelector('.default-project');
+const projectNav = document.querySelector('.project-nav');
 
 let projects = [];
 let curSelectedProject = 0;
 
 function createProject(name){
     projects[projects.length] = new Project(name, projects.length);
-    //Call createProjectDOM to add to DOM with data-index
+    createProjectDOM(name, projects.length);
+}
+
+function createProjectDOM(name, ind){
+    console.log("Before cloning:", defaultProject.innerHTML);
+    let newProjectNode = defaultProject.cloneNode(true);
+    newProjectNode.classList.remove('default-project');
+    let projectNameText = newProjectNode.querySelector('.project-name-text');
+    projectNameText.textContent = name;
+    newProjectNode.dataset.index = ind;
+    projectNav.insertBefore(newProjectNode, addNewProjectBtn);
+    console.log("After cloning:", newProjectNode.innerHTML);
 }
 
 function removeProject(ind){
