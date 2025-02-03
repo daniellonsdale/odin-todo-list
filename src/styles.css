@@ -29,6 +29,7 @@ body{
     display: grid;
     grid-template-columns: 115px 1fr;
     grid-template-rows: 1fr 8fr;
+    font-family: 'oswaldlight', Arial, Helvetica, sans-serif;
 }
 
 body header{
@@ -38,6 +39,8 @@ body header{
     display: flex;
     justify-content: baseline;
     align-items: center;
+
+    font-family: 'oswald_regularregular', inherit;
 }
 
 body .sidebar{
