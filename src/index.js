@@ -9,8 +9,8 @@ const projectModalCloseBtn = document.querySelector('.project-modal-close-button
 const taskModalCloseBtn = document.querySelector('.task-modal-close-button');
 const newProjectForm = document.querySelector('.new-project-form');
 const newTaskForm = document.querySelector('.new-task-form');
-const newProjectSubmitBtn = document.querySelector('new-project-submit-button');
-const newTaskSubmitBtn = document.querySelector('new-task-submit-button');
+const newProjectSubmitBtn = document.querySelector('.new-project-submit-button');
+const newTaskSubmitBtn = document.querySelector('.new-task-submit-button');
 
 let projects = [];
 
