@@ -6,6 +6,14 @@
     box-sizing: border-box;
 }
 
+:root{
+    --tea-green: #c9e4caff;
+    --cambridge-blue: #87bba2ff;
+    --blue-munsell: #55828bff;
+    --dark-slate-gray: #3b6064ff;
+    --charcoal: #364958ff;
+}
+
 @font-face {
     font-family: 'oswaldlight';
     src: url('./fonts/oswald-light-webfont.woff2') format('woff2'),
@@ -27,7 +35,7 @@
 body{
     min-height: 100vh;
     display: grid;
-    grid-template-columns: 115px 1fr;
+    grid-template-columns: minmax(115px, 15vw) 1fr;
     grid-template-rows: 1fr 8fr;
     font-family: 'oswaldlight', Arial, Helvetica, sans-serif;
 }
@@ -42,6 +50,8 @@ body header{
 
     font-family: 'oswald_regularregular', inherit;
     font-weight: 600;
+    background-color: var(--charcoal);
+    color: var(--tea-green);
 }
 
 body .sidebar{
@@ -51,6 +61,9 @@ body .sidebar{
     display: flex;
     flex-direction: column;
     gap: 24px;
+
+    background-color: var(--dark-slate-gray);
+    color: var(--tea-green);
 }
 
 body .main-content{
@@ -60,6 +73,9 @@ body .main-content{
     display: flex;
     align-items: baseline;
     justify-content: center;
+
+    background-color: var(--blue-munsell);
+    color: var(--tea-green);
 }
 
 svg {
