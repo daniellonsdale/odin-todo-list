@@ -56,6 +56,10 @@ body .sidebar{
 body .main-content{
     grid-column: 2 / 3;
     grid-row: 2 / 3;
+
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
 }
 
 svg {
@@ -79,10 +83,12 @@ header .header-title-container{
     display: flex;
     flex-direction: column;
     gap: 8px;
+    padding-top: 32px;
 }
 
 .date-nav .date-group{
     display: flex;
+    align-items: center;
 }
 
 .sidebar .project-nav{
@@ -106,4 +112,43 @@ header .header-title-container{
 .project-nav h2{
     font-size: 2rem;
     font-weight: 600;
+}
+
+.main-content .main-content-container{
+    display: flex;
+    flex-direction: column;
+
+    width: 70%;
+    padding-top: 32px;
+}
+
+.main-content-container h2{
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.main-content-container .tasks-container{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.main-content-container .task-card{
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-card .task-card-left-container{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.task-card-left-container .task-name{
+    font-size: 1.5rem;
+}
+
+.task-card .task-card-right-container{
+    display: flex;
 }
