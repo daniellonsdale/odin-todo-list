@@ -11,9 +11,9 @@
             <button type="button" class="project-modal-close-button">X</button>
             <div class="input-wrapper">
                 <label for="project-name">Project name:</label>
-                <input type="text" name="project-name" id="project-name" minlength="1" maxlength="35">
+                <input type="text" name="project-name" id="project-name" minlength="1" maxlength="35" required>
             </div>
-            <button type="submit" class="submit-button">Submit</button>
+            <button type="submit" class="new-project-submit-button">Submit</button>
         </form>
     </dialog>
     <dialog class="new-task-dialog">
@@ -25,19 +25,19 @@
             <div class="form-input-container">
                 <div class="input-wrapper">
                     <label for="task-name">Task name:</label>
-                    <input type="text" name="task-name" id="task-name">
+                    <input type="text" name="task-name" id="task-name" minlength="1" maxlength="25" required>
                 </div>
                 <div class="input-wrapper">
                     <label for="task-description"></label>
-                    <textarea name="task-description" id="task-description"></textarea>
+                    <textarea name="task-description" id="task-description" minlength="5" maxlength="300" required></textarea>
                 </div>
                 <div class="input-wrapper">
                     <label for="task-due-date"></label>
-                    <input type="datetime-local" name="task-due-date" id="task-due-date">
+                    <input type="date" name="task-due-date" id="task-due-date" required>
                 </div>
                 <div class="input-wrapper">
                     <label for="task-priority"></label>
-                    <select name="task-priority" id="task-priority">
+                    <select name="task-priority" id="task-priority" required>
                         <option value="5">Lowest</option>
                         <option value="4">Low</option>
                         <option value="3">Medium</option>
@@ -46,7 +46,7 @@
                     </select>
                 </div>
             </div>
-            <button type="submit" class="submit-button">Submit</button>
+            <button type="submit" class="new-task-submit-button">Submit</button>
         </form>
     </dialog>
     <header>

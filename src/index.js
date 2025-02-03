@@ -9,6 +9,8 @@ const projectModalCloseBtn = document.querySelector('.project-modal-close-button
 const taskModalCloseBtn = document.querySelector('.task-modal-close-button');
 const newProjectForm = document.querySelector('.new-project-form');
 const newTaskForm = document.querySelector('.new-task-form');
+const newProjectSubmitBtn = document.querySelector('new-project-submit-button');
+const newTaskSubmitBtn = document.querySelector('new-task-submit-button');
 
 let projects = [];
 
@@ -43,6 +45,19 @@ projectModalCloseBtn.addEventListener('click', () => {
 taskModalCloseBtn.addEventListener('click', () => {
     newTaskDialog.close();
     newTaskForm.reset();
+});
+
+newProjectSubmitBtn.addEventListener('click', (e) => {
+    let projectNameValidity = document.querySelector('#project-name').reportValidity();
+    if(projectNameValidity){
+        e.preventDefault();
+
+        const projectFormData = new FormData(newProjectForm);
+        createProject(projectFormData.get('project-name'));
+
+        newProjectDialog.close();
+        newProjectForm.reset();
+    }
 });
 
 createProject("testpro");
