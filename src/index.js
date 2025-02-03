@@ -12,6 +12,7 @@ const newTaskForm = document.querySelector('.new-task-form');
 const newProjectSubmitBtn = document.querySelector('.new-project-submit-button');
 const newTaskSubmitBtn = document.querySelector('.new-task-submit-button');
 const defaultProject = document.querySelector('.default-project');
+const projectContainer = document.querySelector('.project-container');
 
 let projects = [];
 let curSelectedProject = 0;
@@ -48,7 +49,7 @@ function removeProjectDOM(ind){
     projectNodeList.forEach(element => {
         if(parseInt(element.dataset.index) === ind){
             element.remove();
-        }else if(element.dataset.index > ind){
+        }else if(parseInt(element.dataset.index) > ind){
             let tempIndex = parseInt(element.dataset.index);
             tempIndex--;
             element.dataset.index = tempIndex;
@@ -102,6 +103,13 @@ newTaskSubmitBtn.addEventListener('click', (e) => {
         newTaskDialog.close();
         newTaskForm.reset();
     }
+});
+
+projectContainer.addEventListener('click', (e) => {
+    if(e.target.classList.contains('remove-button')){
+        removeProject(parseInt(e.target.parentElement.dataset.index));
+    }
+    //Add conditionals for switching to projects, maybe a confirmation modal
 });
 
 createProject("testpro");
