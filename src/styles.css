@@ -144,6 +144,18 @@ header .header-title-container{
     margin-bottom: 24px;
 }
 
+.main-content-container .tasks-header-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tasks-header-container .add-new-task{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
 .main-content-container .tasks-container{
     display: flex;
     flex-direction: column;
