@@ -23,14 +23,12 @@ function createProject(name){
 }
 
 function createProjectDOM(name, ind){
-    console.log("Before cloning:", defaultProject.innerHTML);
     let newProjectNode = defaultProject.cloneNode(true);
     newProjectNode.classList.remove('default-project');
     let projectNameText = newProjectNode.querySelector('.project-name-text');
     projectNameText.textContent = name;
     newProjectNode.dataset.index = ind;
     projectNav.insertBefore(newProjectNode, addNewProjectBtn);
-    console.log("After cloning:", newProjectNode.innerHTML);
 }
 
 function removeProject(ind){
@@ -40,7 +38,20 @@ function removeProject(ind){
             element.index--;
         }
     });
-    //Call removeProjectDOM to remove from DOM based on data-index
+    removeProjectDOM(ind);
+}
+
+function removeProjectDOM(ind){
+    let projectNodeList = document.querySelectorAll('.project-group');
+    projectNodeList.forEach(element => {
+        if(parseInt(element.dataset.index) === ind){
+            element.remove();
+        }else if(element.dataset.index > ind){
+            let tempIndex = parseInt(element.dataset.index);
+            tempIndex--;
+            element.dataset.index = tempIndex;
+        }
+    });
 }
 
 addNewProjectBtn.addEventListener('click', () => {
@@ -72,7 +83,6 @@ newProjectSubmitBtn.addEventListener('click', (e) => {
         newProjectDialog.close();
         newProjectForm.reset();
     }
-    console.log(projects);
 });
 
 newTaskSubmitBtn.addEventListener('click', (e) => {
@@ -90,8 +100,6 @@ newTaskSubmitBtn.addEventListener('click', (e) => {
         newTaskDialog.close();
         newTaskForm.reset();
     }
-
-    console.log(projects);
 });
 
 createProject("testpro");
