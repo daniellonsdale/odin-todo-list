@@ -13,6 +13,7 @@ const newProjectSubmitBtn = document.querySelector('.new-project-submit-button')
 const newTaskSubmitBtn = document.querySelector('.new-task-submit-button');
 
 let projects = [];
+let curSelectedProject = 0;
 
 function createProject(name){
     projects[projects.length] = new Project(name, projects.length);
@@ -58,6 +59,26 @@ newProjectSubmitBtn.addEventListener('click', (e) => {
         newProjectDialog.close();
         newProjectForm.reset();
     }
+    console.log(projects);
+});
+
+newTaskSubmitBtn.addEventListener('click', (e) => {
+    let taskNameValidity = document.querySelector('#task-name');
+    let taskDescriptionValidity = document.querySelector('#task-description');
+    let taskDueDateValidity = document.querySelector('#task-due-date');
+    let taskPriorityValidity = document.querySelector('#task-priority');
+
+    if(taskNameValidity && taskDescriptionValidity && taskDueDateValidity && taskPriorityValidity){
+        e.preventDefault();
+
+        const taskFormData = new FormData(newTaskForm);
+        projects[curSelectedProject].createTodo(taskFormData.get('task-name'), taskFormData.get('task-description'), taskFormData.get('task-due-date'), taskFormData.get('task-priority'));
+
+        newTaskDialog.close();
+        newTaskForm.reset();
+    }
+
+    console.log(projects);
 });
 
 createProject("testpro");
