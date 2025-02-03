@@ -41,6 +41,7 @@ body header{
     align-items: center;
 
     font-family: 'oswald_regularregular', inherit;
+    font-weight: 600;
 }
 
 body .sidebar{
@@ -49,6 +50,7 @@ body .sidebar{
 
     display: flex;
     flex-direction: column;
+    gap: 24px;
 }
 
 body .main-content{
@@ -69,9 +71,14 @@ header .header-title-container{
     font-size: 3rem;
 }
 
+.sidebar > * {
+    margin-left: 12px;
+}
+
 .sidebar .date-nav{
     display: flex;
     flex-direction: column;
+    gap: 8px;
 }
 
 .date-nav .date-group{
@@ -81,14 +88,22 @@ header .header-title-container{
 .sidebar .project-nav{
     display: flex;
     flex-direction: column;
+    gap: 8px;
 }
 
 .project-nav .project-group{
     display: flex;
+    align-items: center;
     gap: 12px;
 }
 
 .project-nav .add-new-project{
     display: flex;
+    align-items: center;
     gap: 12px;
+}
+
+.project-nav h2{
+    font-size: 2rem;
+    font-weight: 600;
 }
