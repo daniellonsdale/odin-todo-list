@@ -12,7 +12,6 @@ const newTaskForm = document.querySelector('.new-task-form');
 const newProjectSubmitBtn = document.querySelector('.new-project-submit-button');
 const newTaskSubmitBtn = document.querySelector('.new-task-submit-button');
 const defaultProject = document.querySelector('.default-project');
-const projectNav = document.querySelector('.project-nav');
 
 let projects = [];
 let curSelectedProject = 0;
@@ -28,7 +27,10 @@ function createProjectDOM(name, ind){
     let projectNameText = newProjectNode.querySelector('.project-name-text');
     projectNameText.textContent = name;
     newProjectNode.dataset.index = ind;
-    projectNav.insertBefore(newProjectNode, addNewProjectBtn);
+    let curFinalProjectDataIndex = projects.length - 1;
+    console.log(curFinalProjectDataIndex);
+    let curFinalProject = document.querySelector(`[data-index="${curFinalProjectDataIndex}"]`);
+    curFinalProject.after(newProjectNode);
 }
 
 function removeProject(ind){
