@@ -180,3 +180,10 @@ header .header-title-container{
 .task-card .task-card-right-container{
     display: flex;
 }
+
+form{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
