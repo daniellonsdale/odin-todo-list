@@ -35,7 +35,7 @@
 body{
     min-height: 100vh;
     display: grid;
-    grid-template-columns: minmax(115px, 15vw) 1fr;
+    grid-template-columns: minmax(10rem, 15vw) 1fr;
     grid-template-rows: 1fr 8fr;
     font-family: 'oswaldlight', Arial, Helvetica, sans-serif;
 }
