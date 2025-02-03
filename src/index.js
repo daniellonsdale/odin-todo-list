@@ -1,6 +1,11 @@
 import "./styles.css";
 import { Project } from "./project";
 
+const newProjectDialog = document.querySelector('.new-project-dialog');
+const newTaskDialog = document.querySelector('.new-task-dialog');
+const addNewProjectBtn = document.querySelector('.add-new-project');
+const addNewTaskBtn = document.querySelector('.add-new-task');
+
 let projects = [];
 
 function createProject(name){
@@ -17,6 +22,14 @@ function removeProject(ind){
     });
     //Call removeProjectDOM to remove from DOM based on data-index
 }
+
+addNewProjectBtn.addEventListener('click', () => {
+    newProjectDialog.showModal();
+});
+
+addNewTaskBtn.addEventListener('click', () => {
+    newTaskDialog.showModal();
+});
 
 createProject("testpro");
 console.log(projects);
