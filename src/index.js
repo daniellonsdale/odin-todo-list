@@ -5,6 +5,10 @@ const newProjectDialog = document.querySelector('.new-project-dialog');
 const newTaskDialog = document.querySelector('.new-task-dialog');
 const addNewProjectBtn = document.querySelector('.add-new-project');
 const addNewTaskBtn = document.querySelector('.add-new-task');
+const projectModalCloseBtn = document.querySelector('.project-modal-close-button');
+const taskModalCloseBtn = document.querySelector('.task-modal-close-button');
+const newProjectForm = document.querySelector('.new-project-form');
+const newTaskForm = document.querySelector('.new-task-form');
 
 let projects = [];
 
@@ -29,6 +33,16 @@ addNewProjectBtn.addEventListener('click', () => {
 
 addNewTaskBtn.addEventListener('click', () => {
     newTaskDialog.showModal();
+});
+
+projectModalCloseBtn.addEventListener('click', () => {
+    newProjectDialog.close();
+    newProjectForm.reset();
+});
+
+taskModalCloseBtn.addEventListener('click', () => {
+    newTaskDialog.close();
+    newTaskForm.reset();
 });
 
 createProject("testpro");

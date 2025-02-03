@@ -7,8 +7,8 @@
 </head>
 <body>
     <dialog class="new-project-dialog">
-        <form action="">
-            <button type="button" class="modal-close-button">X</button>
+        <form action="" class="new-project-form">
+            <button type="button" class="project-modal-close-button">X</button>
             <div class="input-wrapper">
                 <label for="project-name">Project name:</label>
                 <input type="text" name="project-name" id="project-name" minlength="1" maxlength="35">
@@ -17,10 +17,10 @@
         </form>
     </dialog>
     <dialog class="new-task-dialog">
-        <form action="">
+        <form action="" class="new-task-form">
             <div class="form-header-container">
                 <h2>Task Information</h2>
-                <button type="button" class="modal-close-button">X</button>
+                <button type="button" class="task-modal-close-button">X</button>
             </div>
             <div class="form-input-container">
                 <div class="input-wrapper">
@@ -46,6 +46,7 @@
                     </select>
                 </div>
             </div>
+            <button type="submit" class="submit-button">Submit</button>
         </form>
     </dialog>
     <header>
