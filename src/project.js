@@ -6,11 +6,7 @@ export class Project{
         this.name = name;
         this.index = index;
     }
-
-    get todos(){
-        return this.todos;
-    }
-
+    
     createTodo(title, description, dueDate, priority){
         this.todos[this.todos.length] = new Todo(title, description, dueDate, priority, this.todos.length);
         //Call createTodoDOM() to add to DOM with data-index
