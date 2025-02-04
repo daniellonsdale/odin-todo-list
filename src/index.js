@@ -18,6 +18,8 @@ const tasksContainer = document.querySelector('.tasks-container');
 let projects = [];
 let curSelectedProject = 0;
 
+//MAKE SURE DEFAULT PROJECT IS A PROHJECT OBJECT in projects[]
+
 function createProject(name){
     projects[projects.length] = new Project(name, projects.length);
     createProjectDOM(name, projects.length);
