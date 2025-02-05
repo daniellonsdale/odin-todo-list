@@ -171,8 +171,9 @@ newTaskSubmitBtn.addEventListener('click', (e) => {
 });
 
 projectContainer.addEventListener('click', (e) => {
-    if(e.target.classList.contains('remove-button')){
-        removeProject(parseInt(e.target.parentElement.dataset.index));
+    const removeBtn = e.target.closest('.remove-button');
+    if(removeBtn){
+        removeProject(parseInt(removeBtn.parentElement.dataset.index));
     }
     //Add conditionals for switching to projects, maybe a confirmation modal
 });
