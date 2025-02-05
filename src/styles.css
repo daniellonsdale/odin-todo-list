@@ -198,4 +198,12 @@ form{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-color: var(--charcoal);
+    color: var(--tea-green);
+    font-family: inherit;
+    padding: 12px;
+}
+
+form h2{
+    font-size: 2rem
 }
