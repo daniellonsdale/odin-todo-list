@@ -18,11 +18,13 @@ const tasksContainer = document.querySelector('.tasks-container');
 let projects = [];
 let curSelectedProject = 0;
 
-//MAKE SURE DEFAULT PROJECT IS A PROHJECT OBJECT in projects[]
+//add default project to array as object
+projects[0] = new Project("default", 0);
 
 function createProject(name){
-    projects[projects.length] = new Project(name, projects.length);
-    createProjectDOM(name, projects.length);
+    let newIndex = projects.length;
+    projects[newIndex] = new Project(name, projects.length);
+    createProjectDOM(name, newIndex);
 }
 
 function createProjectDOM(name, ind){
@@ -31,7 +33,7 @@ function createProjectDOM(name, ind){
     let projectNameText = newProjectNode.querySelector('.project-name-text');
     projectNameText.textContent = name;
     newProjectNode.dataset.index = ind;
-    let curFinalProjectDataIndex = projects.length - 1;
+    let curFinalProjectDataIndex = ind - 1;
     console.log(curFinalProjectDataIndex);
     let curFinalProject = document.querySelector(`[data-index="${curFinalProjectDataIndex}"]`);
     curFinalProject.after(newProjectNode);
@@ -165,7 +167,8 @@ newTaskSubmitBtn.addEventListener('click', (e) => {
 });
 
 projectContainer.addEventListener('click', (e) => {
-    if(e.target.classList.contains('remove-button')){
+    //There must be at least one project
+    if(e.target.classList.contains('remove-button') && projects.length > 0){
         removeProject(parseInt(e.target.parentElement.dataset.index));
     }
     //Add conditionals for switching to projects, maybe a confirmation modal
