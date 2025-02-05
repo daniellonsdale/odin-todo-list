@@ -78,6 +78,18 @@ body .main-content{
     color: var(--tea-green);
 }
 
+button{
+    background-color: inherit;
+    color: inherit;
+    border: none;
+    font-family: inherit;
+}
+
+button:hover{
+    cursor: pointer;
+    opacity: .5;
+}
+
 svg {
     max-width: 100%;
     height: auto;

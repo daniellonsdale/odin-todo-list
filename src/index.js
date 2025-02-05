@@ -89,7 +89,7 @@ function updateDisplayedTodos(){
         const tempTaskCardRightContainer = document.createElement('div');
         tempTaskCardRightContainer.classList.add('task-card-right-container');
 
-        const tempTaskCardCompleteContainer = document.createElement('div');
+        const tempTaskCardCompleteContainer = document.createElement('button');
         tempTaskCardCompleteContainer.classList.add('complete-task');
         const completeTaskSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         completeTaskSVG.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
@@ -103,7 +103,7 @@ function updateDisplayedTodos(){
         tempTaskCardCompleteContainer.appendChild(completeTaskSVG);
         tempTaskCardRightContainer.appendChild(tempTaskCardCompleteContainer);
 
-        const tempTaskCardDeleteContainer = document.createElement('div');
+        const tempTaskCardDeleteContainer = document.createElement('button');
         tempTaskCardDeleteContainer.classList.add('delete-task');
         const deleteTaskSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         deleteTaskSVG.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
