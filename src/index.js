@@ -40,6 +40,10 @@ function createProjectDOM(name, ind){
 }
 
 function removeProject(ind){
+    //There must be at least one project
+    if (projects.length === 1){
+        return;
+    }
     projects.splice(ind, 1);
     projects.forEach(element => {
         if (element.index > ind){
@@ -167,8 +171,7 @@ newTaskSubmitBtn.addEventListener('click', (e) => {
 });
 
 projectContainer.addEventListener('click', (e) => {
-    //There must be at least one project
-    if(e.target.classList.contains('remove-button') && projects.length > 0){
+    if(e.target.classList.contains('remove-button')){
         removeProject(parseInt(e.target.parentElement.dataset.index));
     }
     //Add conditionals for switching to projects, maybe a confirmation modal
