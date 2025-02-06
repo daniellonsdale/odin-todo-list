@@ -30,20 +30,17 @@ function createProject(name){
 function createProjectDOM(name, ind){
     let newProjectNode = defaultProject.cloneNode(true);
     newProjectNode.classList.remove('default-project');
+    let newProjectIcon = newProjectNode.querySelector('.project-icon');
+    newProjectIcon.classList.remove('cur-selected-project');
     let projectNameText = newProjectNode.querySelector('.project-name-text');
     projectNameText.textContent = name;
     newProjectNode.dataset.index = ind;
     let curFinalProjectDataIndex = ind - 1;
-    console.log(curFinalProjectDataIndex);
     let curFinalProject = document.querySelector(`[data-index="${curFinalProjectDataIndex}"]`);
     curFinalProject.after(newProjectNode);
 }
 
 function removeProject(ind){
-    //There must be at least one project
-    if (projects.length === 1){
-        return;
-    }
     projects.splice(ind, 1);
     projects.forEach(element => {
         if (element.index > ind){
@@ -172,12 +169,33 @@ newTaskSubmitBtn.addEventListener('click', (e) => {
 
 projectContainer.addEventListener('click', (e) => {
     const removeBtn = e.target.closest('.remove-button');
-    const projectName =e.target.closest('.project-name-text');
-    if(removeBtn){
+    const projectName = e.target.closest('.project-name-text');
+    if(removeBtn && projects.length > 1){
+        if(curSelectedProject === parseInt(removeBtn.parentElement.dataset.index) && curSelectedProject === 0){
+            curSelectedProject = 1;
+            let curProject = document.querySelector(`[data-index="${curSelectedProject}"]`);
+            let curProjectIcon = curProject.querySelector('.project-icon');
+            curProjectIcon.classList.add('cur-selected-project');
+            updateDisplayedTodos();
+            curSelectedProject = 0;
+        }else if(curSelectedProject === parseInt(removeBtn.parentElement.dataset.index) && curSelectedProject !== 0){
+            curSelectedProject--;
+            let curProject = document.querySelector(`[data-index="${curSelectedProject}"]`);
+            let curProjectIcon = curProject.querySelector('.project-icon');
+            curProjectIcon.classList.add('cur-selected-project');
+            updateDisplayedTodos();
+        }
         removeProject(parseInt(removeBtn.parentElement.dataset.index));
-    }else if(projectName){
-        curSelectedProject = projectName.parentElement.dataset.index;
+    }else if(projectName && parseInt(projectName.parentElement.dataset.index) !== curSelectedProject){
+        console.log(parseInt(projectName.parentElement.dataset.index));
+        console.log(curSelectedProject);
+        let prevProject = document.querySelector(`[data-index="${curSelectedProject}"]`);
+        let prevProjectIcon = prevProject.querySelector('.project-icon');
+        prevProjectIcon.classList.remove('cur-selected-project');
+        curSelectedProject = parseInt(projectName.parentElement.dataset.index);
+        let curProject = document.querySelector(`[data-index="${curSelectedProject}"]`);
+        let curProjectIcon = curProject.querySelector('.project-icon');
+        curProjectIcon.classList.add('cur-selected-project');
         updateDisplayedTodos();
     }
-    //Add conditionals for switching to projects, maybe a confirmation modal
 });

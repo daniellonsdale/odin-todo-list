@@ -148,6 +148,10 @@ header .header-title-container{
     opacity: .5;
 }
 
+.cur-selected-project{
+    color: var(--cambridge-blue);
+}
+
 .main-content .main-content-container{
     display: flex;
     flex-direction: column;
