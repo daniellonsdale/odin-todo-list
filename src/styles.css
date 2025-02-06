@@ -143,6 +143,11 @@ header .header-title-container{
     font-weight: 600;
 }
 
+.project-nav .project-name-text:hover{
+    cursor: pointer;
+    opacity: .5;
+}
+
 .main-content .main-content-container{
     display: flex;
     flex-direction: column;
