@@ -149,7 +149,7 @@ header .header-title-container{
 }
 
 .cur-selected-project{
-    color: var(--cambridge-blue);
+    color: rgb(175, 83, 255);
 }
 
 .main-content .main-content-container{
