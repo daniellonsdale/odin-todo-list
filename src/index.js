@@ -172,8 +172,12 @@ newTaskSubmitBtn.addEventListener('click', (e) => {
 
 projectContainer.addEventListener('click', (e) => {
     const removeBtn = e.target.closest('.remove-button');
+    const projectName =e.target.closest('.project-name-text');
     if(removeBtn){
         removeProject(parseInt(removeBtn.parentElement.dataset.index));
+    }else if(projectName){
+        curSelectedProject = projectName.parentElement.dataset.index;
+        updateDisplayedTodos();
     }
     //Add conditionals for switching to projects, maybe a confirmation modal
 });
