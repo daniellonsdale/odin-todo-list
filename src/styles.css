@@ -203,6 +203,11 @@ header .header-title-container{
     display: flex;
 }
 
+.tasks-container .completed-task{
+    opacity: .5;
+    text-decoration: line-through;
+}
+
 form{
     position: fixed;
     top: 50%;

@@ -199,3 +199,12 @@ projectContainer.addEventListener('click', (e) => {
         updateDisplayedTodos();
     }
 });
+
+tasksContainer.addEventListener('click', (e) => {
+    let completedTask = e.target.closest('.task-card');
+    if (completedTask.classList.contains('completed-task')){
+        completedTask.classList.remove('completed-task');
+    }else{
+        completedTask.classList.add('completed-task');
+    }
+});
