@@ -150,10 +150,10 @@ newProjectSubmitBtn.addEventListener('click', (e) => {
 });
 
 newTaskSubmitBtn.addEventListener('click', (e) => {
-    let taskNameValidity = document.querySelector('#task-name');
-    let taskDescriptionValidity = document.querySelector('#task-description');
-    let taskDueDateValidity = document.querySelector('#task-due-date');
-    let taskPriorityValidity = document.querySelector('#task-priority');
+    let taskNameValidity = document.querySelector('#task-name').reportValidity();
+    let taskDescriptionValidity = document.querySelector('#task-description').reportValidity();
+    let taskDueDateValidity = document.querySelector('#task-due-date').reportValidity();
+    let taskPriorityValidity = document.querySelector('#task-priority').reportValidity();
 
     if(taskNameValidity && taskDescriptionValidity && taskDueDateValidity && taskPriorityValidity){
         e.preventDefault();
