@@ -69,6 +69,9 @@ function updateDisplayedTodos(){
     projects[curSelectedProject].todos.forEach((element) => {
         const tempTaskCard = document.createElement('div');
         tempTaskCard.classList.add('task-card');
+        if(element.completed === true){
+            tempTaskCard.classList.add('completed-task');
+        }
         tempTaskCard.dataset.index = element.index;
 
         const tempTaskCardLeftContainer = document.createElement('div');
@@ -206,8 +209,10 @@ tasksContainer.addEventListener('click', (e) => {
     if(completedTask){
         if (completedTask.parentElement.parentElement.classList.contains('completed-task')){
             completedTask.parentElement.parentElement.classList.remove('completed-task');
+            projects[curSelectedProject].todos[parseInt(completedTask.parentElement.parentElement.dataset.index)].completed = false;
         }else{
             completedTask.parentElement.parentElement.classList.add('completed-task');
+            projects[curSelectedProject].todos[parseInt(completedTask.parentElement.parentElement.dataset.index)].completed = true;
         }
     }else if(removeTask){
 

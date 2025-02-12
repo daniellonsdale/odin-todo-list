@@ -8,7 +8,7 @@ export class Project{
     }
     
     createTodo(title, description, dueDate, priority){
-        this.todos[this.todos.length] = new Todo(title, description, dueDate, priority, this.todos.length);
+        this.todos[this.todos.length] = new Todo(title, description, dueDate, priority, this.todos.length, false);
         //Call createTodoDOM() to add to DOM with data-index
     }
 
