@@ -201,10 +201,15 @@ projectContainer.addEventListener('click', (e) => {
 });
 
 tasksContainer.addEventListener('click', (e) => {
-    let completedTask = e.target.closest('.task-card');
-    if (completedTask.classList.contains('completed-task')){
-        completedTask.classList.remove('completed-task');
-    }else{
-        completedTask.classList.add('completed-task');
+    let completedTask = e.target.closest('.complete-task');
+    let removeTask = e.target.closest('.delete-task');
+    if(completedTask){
+        if (completedTask.parentElement.parentElement.classList.contains('completed-task')){
+            completedTask.parentElement.parentElement.classList.remove('completed-task');
+        }else{
+            completedTask.parentElement.parentElement.classList.add('completed-task');
+        }
+    }else if(removeTask){
+
     }
 });
