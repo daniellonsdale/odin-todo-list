@@ -215,6 +215,9 @@ tasksContainer.addEventListener('click', (e) => {
             projects[curSelectedProject].todos[parseInt(completedTask.parentElement.parentElement.dataset.index)].completed = true;
         }
     }else if(removeTask){
-
+        console.log(parseInt(removeTask.parentElement.parentElement.dataset.index));
+        projects[curSelectedProject].removeTodo(parseInt(removeTask.parentElement.parentElement.dataset.index));
+        updateDisplayedTodos();
+        console.log(projects[curSelectedProject].todos);
     }
 });

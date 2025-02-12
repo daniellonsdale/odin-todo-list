@@ -21,4 +21,17 @@ export class Project{
         });
         //Call removeTodoDOM to remove from DOM based on data-index
     }
+
+    removeTodoDOM(ind){
+        let todotNodeList = document.querySelectorAll('.task-card');
+        todotNodeList.forEach(element => {
+            if(parseInt(element.dataset.index) === ind){
+                element.remove();
+            }else if(parseInt(element.dataset.index) > ind){
+                let tempIndex = parseInt(element.dataset.index);
+                tempIndex--;
+                element.dataset.index = tempIndex;
+            }
+        });
+    }
 }
