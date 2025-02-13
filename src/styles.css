@@ -117,6 +117,12 @@ header .header-title-container{
 .date-nav .date-group{
     display: flex;
     align-items: center;
+    gap: 12px;
+}
+
+.date-group .date-text:hover{
+    cursor: pointer;
+    opacity: .5;
 }
 
 .sidebar .project-nav{
@@ -146,6 +152,10 @@ header .header-title-container{
 .project-nav .project-name-text:hover{
     cursor: pointer;
     opacity: .5;
+}
+
+.project-nav .remove-button{
+    margin-left: auto;
 }
 
 .cur-selected-project{
