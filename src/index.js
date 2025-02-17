@@ -24,6 +24,7 @@ projects[0] = new Project("default", 0);
 function createProject(name){
     let newIndex = projects.length;
     projects[newIndex] = new Project(name, projects.length);
+    saveProjectsToLocalStorage();
     createProjectDOM(name, newIndex);
 }
 
@@ -48,6 +49,7 @@ function removeProject(ind){
         }
     });
     removeProjectDOM(ind);
+    saveProjectsToLocalStorage();
 }
 
 function removeProjectDOM(ind){
@@ -121,6 +123,10 @@ function updateDisplayedTodos(){
     });
 }
 
+function saveProjectsToLocalStorage() {
+    localStorage.setItem('projects', JSON.stringify(projects));
+}
+
 addNewProjectBtn.addEventListener('click', () => {
     newProjectDialog.showModal();
 });
@@ -166,6 +172,7 @@ newTaskSubmitBtn.addEventListener('click', (e) => {
 
         newTaskDialog.close();
         newTaskForm.reset();
+        saveProjectsToLocalStorage();
         updateDisplayedTodos();
     }
 });
@@ -179,6 +186,7 @@ projectContainer.addEventListener('click', (e) => {
             let curProject = document.querySelector(`[data-index="${curSelectedProject}"]`);
             let curProjectIcon = curProject.querySelector('.project-icon');
             curProjectIcon.classList.add('cur-selected-project');
+            saveProjectsToLocalStorage();
             updateDisplayedTodos();
             curSelectedProject = 0;
         }else if(curSelectedProject === parseInt(removeBtn.parentElement.dataset.index) && curSelectedProject !== 0){
@@ -186,6 +194,7 @@ projectContainer.addEventListener('click', (e) => {
             let curProject = document.querySelector(`[data-index="${curSelectedProject}"]`);
             let curProjectIcon = curProject.querySelector('.project-icon');
             curProjectIcon.classList.add('cur-selected-project');
+            saveProjectsToLocalStorage();
             updateDisplayedTodos();
         }
         removeProject(parseInt(removeBtn.parentElement.dataset.index));
@@ -199,6 +208,7 @@ projectContainer.addEventListener('click', (e) => {
         let curProject = document.querySelector(`[data-index="${curSelectedProject}"]`);
         let curProjectIcon = curProject.querySelector('.project-icon');
         curProjectIcon.classList.add('cur-selected-project');
+        saveProjectsToLocalStorage();
         updateDisplayedTodos();
     }
 });
@@ -210,14 +220,16 @@ tasksContainer.addEventListener('click', (e) => {
         if (completedTask.parentElement.parentElement.classList.contains('completed-task')){
             completedTask.parentElement.parentElement.classList.remove('completed-task');
             projects[curSelectedProject].todos[parseInt(completedTask.parentElement.parentElement.dataset.index)].completed = false;
+            saveProjectsToLocalStorage();
         }else{
             completedTask.parentElement.parentElement.classList.add('completed-task');
             projects[curSelectedProject].todos[parseInt(completedTask.parentElement.parentElement.dataset.index)].completed = true;
+            saveProjectsToLocalStorage();
         }
     }else if(removeTask){
         console.log(parseInt(removeTask.parentElement.parentElement.dataset.index));
         projects[curSelectedProject].removeTodo(parseInt(removeTask.parentElement.parentElement.dataset.index));
+        saveProjectsToLocalStorage();
         updateDisplayedTodos();
-        console.log(projects[curSelectedProject].todos);
     }
 });
