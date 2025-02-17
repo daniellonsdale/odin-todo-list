@@ -1,10 +1,14 @@
 import { Todo } from "./todo";
 
 export class Project{
-    todos = [];
-    constructor(name, index){
+    constructor(name, index, todos = []) {
         this.name = name;
         this.index = index;
+        this.todos = todos.map(todo => new Todo(todo.title, todo.description, todo.index));
+    }
+
+    static fromJSON(json) {
+        return new Project(json.name, json.index, json.todos);
     }
     
     createTodo(title, description, dueDate, priority){
