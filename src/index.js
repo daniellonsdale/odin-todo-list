@@ -15,11 +15,20 @@ const defaultProject = document.querySelector('.default-project');
 const projectContainer = document.querySelector('.project-container');
 const tasksContainer = document.querySelector('.tasks-container');
 
-let projects = [];
+let projects = JSON.parse(localStorage.getItem('projects'))?.map(Project.fromJSON) || [];
 let curSelectedProject = 0;
-
-//add default project to array as object
-projects[0] = new Project("default", 0);
+if (projects.length === 0){
+    //add default project to array as object
+    projects[0] = new Project("default", 0);
+    saveProjectsToLocalStorage();
+}else{
+    projects[0] = new Project("default", 0);
+    projects.forEach((project) => {
+        if(project.index !== 0){
+            createProjectDOM(project.name, project.index);
+        }
+    });
+}
 
 function createProject(name){
     let newIndex = projects.length;
@@ -126,6 +135,12 @@ function updateDisplayedTodos(){
 function saveProjectsToLocalStorage() {
     localStorage.setItem('projects', JSON.stringify(projects));
 }
+
+/* window.addEventListener('load', () => {
+    let storedProjects = JSON.parse(localStorage.getItem('projects')) || [];
+    projects.length = 0;
+    projects.push(...storedProjects.map(Project.fromJSON));
+}); */
 
 addNewProjectBtn.addEventListener('click', () => {
     newProjectDialog.showModal();
