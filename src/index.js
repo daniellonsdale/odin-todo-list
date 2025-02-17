@@ -17,9 +17,6 @@ const tasksContainer = document.querySelector('.tasks-container');
 
 let projects = [];
 let curSelectedProject = 0;
-let todayTodos = [];
-let thisWeekTodos = [];
-let projectSelected = true;
 
 //add default project to array as object
 projects[0] = new Project("default", 0);
