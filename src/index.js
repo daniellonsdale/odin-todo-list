@@ -18,8 +18,6 @@ const defaultProject = document.querySelector('.default-project');
 const projectContainer = document.querySelector('.project-container');
 const tasksContainer = document.querySelector('.tasks-container');
 
-//Fix bug on setting todo as completed
-
 let projects = JSON.parse(localStorage.getItem('projects'))?.map(Project.fromJSON) || [];
 let curSelectedProject = 0;
 if (projects.length === 0){
