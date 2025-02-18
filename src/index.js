@@ -3,6 +3,9 @@ import { Project } from "./project";
 
 const newProjectDialog = document.querySelector('.new-project-dialog');
 const newTaskDialog = document.querySelector('.new-task-dialog');
+const taskDecriptionDialog = document.querySelector('.task-description-dialog');
+const taskDecriptionCloseBtn = document.querySelector('.task-decription-modal-close-button');
+const taskDecriptionContainer = document.querySelector('.task-description-container');
 const addNewProjectBtn = document.querySelector('.add-new-project');
 const addNewTaskBtn = document.querySelector('.add-new-task');
 const projectModalCloseBtn = document.querySelector('.project-modal-close-button');
@@ -182,6 +185,10 @@ taskModalCloseBtn.addEventListener('click', () => {
     newTaskForm.reset();
 });
 
+taskDecriptionCloseBtn.addEventListener('click', () => {
+    taskDecriptionDialog.close();
+});
+
 newProjectSubmitBtn.addEventListener('click', (e) => {
     let projectNameValidity = document.querySelector('#project-name').reportValidity();
     if(projectNameValidity){
@@ -253,6 +260,7 @@ projectContainer.addEventListener('click', (e) => {
 tasksContainer.addEventListener('click', (e) => {
     let completedTask = e.target.closest('.complete-task');
     let removeTask = e.target.closest('.delete-task');
+    let tempTaskCard = e.target.closest('.task-card');
     if(completedTask){
         if (completedTask.parentElement.parentElement.classList.contains('completed-task')){
             completedTask.parentElement.parentElement.classList.remove('completed-task');
@@ -268,5 +276,8 @@ tasksContainer.addEventListener('click', (e) => {
         projects[curSelectedProject].removeTodo(parseInt(removeTask.parentElement.parentElement.dataset.index));
         saveProjectsToLocalStorage();
         updateDisplayedTodos();
+    }else{
+        taskDecriptionDialog.showModal();
+        taskDecriptionContainer.textContent = projects[curSelectedProject].todos[parseInt(tempTaskCard.dataset.index)].description;
     }
 });

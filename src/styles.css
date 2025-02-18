@@ -240,7 +240,7 @@ header .header-title-container{
     border-left: solid rgb(255, 0, 0);
 }
 
-form{
+.form-like{
     position: fixed;
     top: 50%;
     left: 50%;
@@ -256,11 +256,11 @@ form{
     gap: 12px;
 }
 
-form h2{
+.form-like h2{
     font-size: 2rem
 }
 
-form button{
+.form-like button{
     padding: 4px 8px;
     background-color: var(--dark-slate-gray);
 }
@@ -269,6 +269,7 @@ form button{
     width: 100%;
     flex: 1;
     display: flex;
+    gap: 8px;
     align-items: center;
 }
 
