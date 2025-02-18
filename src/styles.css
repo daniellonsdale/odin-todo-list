@@ -198,6 +198,7 @@ header .header-title-container{
 .main-content-container .task-card{
     display: flex;
     justify-content: space-between;
+    padding-left: 8px;
 }
 
 .task-card .task-card-left-container{
@@ -217,6 +218,26 @@ header .header-title-container{
 .tasks-container .completed-task{
     opacity: .5;
     text-decoration: line-through;
+}
+
+.tasks-container .prio5{
+    border-left: solid rgb(4, 255, 0);
+}
+
+.tasks-container .prio4{
+    border-left: solid rgb(174, 255, 0);
+}
+
+.tasks-container .prio3{
+    border-left: solid rgb(255, 234, 0);
+}
+
+.tasks-container .prio2{
+    border-left: solid rgb(255, 136, 0);
+}
+
+.tasks-container .prio1{
+    border-left: solid rgb(255, 0, 0);
 }
 
 form{

@@ -85,6 +85,25 @@ function updateDisplayedTodos(){
         if(element.completed === true){
             tempTaskCard.classList.add('completed-task');
         }
+        switch(element.priority){
+            case 5:
+                tempTaskCard.classList.add('prio5');
+                break;
+            case 4:
+                tempTaskCard.classList.add('prio4');
+                break;
+            case 3:
+                tempTaskCard.classList.add('prio3');
+                break;
+            case 2:
+                tempTaskCard.classList.add('prio2');
+                break;
+            case 1:
+                tempTaskCard.classList.add('prio1');
+                break;
+            default:
+                break;
+        }
         tempTaskCard.dataset.index = element.index;
 
         const tempTaskCardLeftContainer = document.createElement('div');
@@ -185,7 +204,7 @@ newTaskSubmitBtn.addEventListener('click', (e) => {
         e.preventDefault();
 
         const taskFormData = new FormData(newTaskForm);
-        projects[curSelectedProject].createTodo(taskFormData.get('task-name'), taskFormData.get('task-description'), taskFormData.get('task-due-date'), taskFormData.get('task-priority'));
+        projects[curSelectedProject].createTodo(taskFormData.get('task-name'), taskFormData.get('task-description'), taskFormData.get('task-due-date'), parseInt(taskFormData.get('task-priority')));
 
         newTaskDialog.close();
         newTaskForm.reset();
