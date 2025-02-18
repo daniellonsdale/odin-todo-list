@@ -24,6 +24,7 @@ if (projects.length === 0){
     projects[0] = new Project("default", 0);
     saveProjectsToLocalStorage();
 }else{
+    //Create function here to generate default project in DOM
     projects[0] = new Project("default", 0);
     projects.forEach((project) => {
         if(project.index !== 0){
