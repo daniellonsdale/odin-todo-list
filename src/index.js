@@ -22,7 +22,7 @@ let projects = JSON.parse(localStorage.getItem('projects'))?.map(Project.fromJSO
 let curSelectedProject = 0;
 if (projects.length === 0){
     //add default project to array as object
-    projects[0] = new Project("default", 0);
+    projects[0] = new Project("Default", 0);
     generateDefaultProjectDOM();
     saveProjectsToLocalStorage();
 }else{
