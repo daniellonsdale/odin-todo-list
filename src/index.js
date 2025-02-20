@@ -29,6 +29,11 @@ if (projects.length === 0){
     projects.forEach((project) => {
         createProjectDOM(project.name, project.index);
     });
+    const indexZeroProject = document.querySelector(`[data-index="0"]`);
+    const indexZeroProjectIcon = indexZeroProject.querySelector('.project-icon');
+    console.log(indexZeroProject);
+    indexZeroProjectIcon.classList.add('cur-selected-project');
+    updateDisplayedTodos();
 }
 
 function generateDefaultProjectDOM(){
