@@ -26,11 +26,8 @@ if (projects.length === 0){
     generateDefaultProjectDOM();
     saveProjectsToLocalStorage();
 }else{
-    generateDefaultProjectDOM();
     projects.forEach((project) => {
-        if(project.index !== 0){
-            createProjectDOM(project.name, project.index);
-        }
+        createProjectDOM(project.name, project.index);
     });
 }
 
@@ -38,6 +35,7 @@ function generateDefaultProjectDOM(){
     const defaultProjectDiv = document.createElement('div');
     defaultProjectDiv.classList.add('default-project');
     defaultProjectDiv.classList.add('project-group');
+    defaultProjectDiv.dataset.index = 0;
 
     const projectIconSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     projectIconSVG.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
@@ -75,6 +73,7 @@ function generateDefaultProjectDOM(){
     defaultProjectDiv.appendChild(projectIconSVG);
     defaultProjectDiv.appendChild(projectNameSpan);
     defaultProjectDiv.appendChild(projectRemoveButton);
+    projectContainer.appendChild(defaultProjectDiv);
 
 }
 
@@ -86,16 +85,54 @@ function createProject(name){
 }
 
 function createProjectDOM(name, ind){
-    let newProjectNode = defaultProject.cloneNode(true);
-    newProjectNode.classList.remove('default-project');
-    let newProjectIcon = newProjectNode.querySelector('.project-icon');
-    newProjectIcon.classList.remove('cur-selected-project');
-    let projectNameText = newProjectNode.querySelector('.project-name-text');
-    projectNameText.textContent = name;
+    const newProjectNode = document.createElement('div');
+    newProjectNode.classList.add('project-group');
+
+    const projectIconSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    projectIconSVG.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    projectIconSVG.setAttribute('height', '24px');
+    projectIconSVG.setAttribute('viewBox', '0 -960 960 960');
+    projectIconSVG.setAttribute('width', '24px');
+    projectIconSVG.setAttribute('fill', 'currentcolor');
+    projectIconSVG.classList.add('project-icon');
+
+    const projectIconPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    projectIconPath.setAttribute('d', 'M222-200 80-342l56-56 85 85 170-170 56 57-225 226Zm0-320L80-662l56-56 85 85 170-170 56 57-225 226Zm298 240v-80h360v80H520Zm0-320v-80h360v80H520Z');
+    projectIconSVG.appendChild(projectIconPath);
+
+    const projectNameSpan = document.createElement('span');
+    projectNameSpan.classList.add('project-name-text');
+
+    const projectRemoveButton = document.createElement('button');
+    projectRemoveButton.setAttribute('type', 'button');
+    projectRemoveButton.classList.add('remove-button');
+
+    const projectRemoveIconSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    projectRemoveIconSVG.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    projectRemoveIconSVG.setAttribute('height', '24px');
+    projectRemoveIconSVG.setAttribute('viewBox', '0 -960 960 960');
+    projectRemoveIconSVG.setAttribute('width', '24px');
+    projectRemoveIconSVG.setAttribute('fill', 'currentcolor');
+
+    const projectRemoveIconPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    projectRemoveIconPath.setAttribute('d', 'm256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z');
+    projectRemoveIconSVG.appendChild(projectRemoveIconPath);
+    projectRemoveButton.appendChild(projectRemoveIconSVG);
+
+    newProjectNode.appendChild(projectIconSVG);
+    newProjectNode.appendChild(projectNameSpan);
+    newProjectNode.appendChild(projectRemoveButton);
+
+    projectNameSpan.textContent = name;
     newProjectNode.dataset.index = ind;
-    let curFinalProjectDataIndex = ind - 1;
-    let curFinalProject = document.querySelector(`[data-index="${curFinalProjectDataIndex}"]`);
-    curFinalProject.after(newProjectNode);
+
+    if(ind > 0){
+        let curFinalProjectDataIndex = ind - 1;
+        let curFinalProject = document.querySelector(`[data-index="${curFinalProjectDataIndex}"]`);
+        curFinalProject.after(newProjectNode);
+    }else{
+        projectContainer.appendChild(newProjectNode);
+    }
 }
 
 function removeProject(ind){
