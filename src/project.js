@@ -4,7 +4,7 @@ export class Project{
     constructor(name, index, todos = []) {
         this.name = name;
         this.index = index;
-        this.todos = todos.map(todo => new Todo(json.title, json.description, json.dueDate, json.priority, json.index, json.completed));
+        this.todos = todos.map(todo => new Todo(todo.title, todo.description, todo.dueDate, todo.priority, todo.index, todo.completed));
     }
 
     static fromJSON(json) {
